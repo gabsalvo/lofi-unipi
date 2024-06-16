@@ -1,26 +1,89 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import VideoBackground from './components/VideoBackground';
+import Shadow from './components/Shadow';
+import Controls from './components/Controls';
+import Playlist from './components/Playlist';
+import AddVideoModal from './components/AddVideoModal';
+import useVideoPlayer from './hooks/useVideoPlayer';
+import Header from './components/Header';
 import './App.css';
 
-function App() {
+const App = () => {
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const {
+    playerRef,
+    playing,
+    muted,
+    volume,
+    currentUrl,
+    played,
+    duration,
+    togglePlayPause,
+    toggleMute,
+    handleVolumeChange,
+    handleProgress,
+    handleDuration,
+    handleSeekChange,
+    shuffleVideo,
+    handleVideoSelect,
+    handleVideoEnd,
+    videoUrls,
+    addVideo
+  } = useVideoPlayer();
+
+  const openModal = () => {
+    setModalIsOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalIsOpen(false);
+  };
+
+  const handleAddVideo = (url) => {
+    addVideo(url);
+    closeModal();
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header />
+      <img src="/sfondo.jpg" alt="Lofi Background" className="background-image" />
+      <Shadow />
+      <VideoBackground
+        videoUrl={currentUrl}
+        playing={playing}
+        muted={muted}
+        volume={volume}
+        ref={playerRef}
+        onProgress={handleProgress}
+        onDuration={handleDuration}
+        onEnded={handleVideoEnd}  // Pass the onEnded handler
+      />
+      <Controls
+        playing={playing}
+        muted={muted}
+        volume={volume}
+        played={played}
+        duration={duration}
+        onPlayPause={togglePlayPause}
+        onMute={toggleMute}
+        onVolumeChange={handleVolumeChange}
+        onSeekChange={handleSeekChange}
+        onShuffle={() => shuffleVideo(videoUrls)}
+      />
+      <Playlist
+        videoUrls={videoUrls}
+        onVideoSelect={handleVideoSelect}
+        currentUrl={currentUrl}
+      />
+      <button onClick={openModal} className="add-video-button">+</button>
+      <AddVideoModal
+        isOpen={modalIsOpen}
+        onClose={closeModal}
+        onAdd={handleAddVideo}
+      />
     </div>
   );
-}
+};
 
 export default App;

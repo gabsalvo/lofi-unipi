@@ -1,0 +1,36 @@
+/* Header.css */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px; /* Adjust padding to match the playlist margin */
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+  position: fixed;
+  width: calc(100% - 65px); /* Adjust width to account for the same margin */
+  top: 0;
+  left: 20px; /* Adjust to align with the playlist's left margin */
+  z-index: 4; /* Ensure it is above other components */
+}
+
+.header-left {
+  flex: 1;
+}
+
+.header-title {
+  font-size: 24px;
+  margin: 0;
+}
+
+.header-right {
+  flex: 0;
+  cursor: pointer;
+}
+
+.header-avatar {
+  width: 40px; /* Adjust size as needed */
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}

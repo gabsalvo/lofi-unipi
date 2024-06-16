@@ -1,0 +1,32 @@
+.controls {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  z-index: 3; /* Ensure it is above the shadow and background */
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.controls button {
+  padding: 10px 20px;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.controls button:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.controls input[type="range"] {
+  width: 100%;
+}
+
+.time {
+  display: flex;
+  justify-content: space-between;
+  color: white;
+  font-size: 14px;
+}

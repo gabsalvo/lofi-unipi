@@ -1,0 +1,18 @@
+.video-wrapper {
+  position: absolute;
+  top: 50%; /* Adjust based on where the TV is located in the image */
+  left: 72%; /* Adjust based on where the TV is located in the image */
+  width: 15%; /* Adjust based on the size of the TV */
+  height: 20%; /* Adjust based on the size of the TV */
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  pointer-events: none; /* Prevent interaction with the video */
+}
+
+.video-background__player {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}

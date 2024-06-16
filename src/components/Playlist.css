@@ -1,0 +1,32 @@
+.playlist {
+  position: absolute;
+  top: 70px; /* Adjust based on the header height */
+  left: 20px;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 10px;
+  border-radius: 5px;
+  max-width: calc(100% - 40px); /* Ensure it is responsive */
+}
+
+.playlist-item {
+  color: white;
+  cursor: pointer;
+  padding: 5px 10px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.playlist-item:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+  border-radius: 5px;
+}
+
+.playlist-item.playing {
+  background-color: #3498db; /* Updated color for playing item */
+  color: white;
+  font-weight: bold;
+  border-radius: 5px; /* Rounded edges for playing item */
+}
