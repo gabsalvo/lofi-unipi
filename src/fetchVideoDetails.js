@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_KEY = 'AIzaSyC8P0KBt3JQNCeBX9Im4IDAWmpZI6_Uh64'; // Replace with your YouTube Data API key
+const API_KEY = process.env.REACT_APP_YOUTUBE_API_KEY; // Replace with your YouTube Data API key
 
 const fetchVideoDetails = async (videoId) => {
   const url = `https://www.googleapis.com/youtube/v3/videos?id=${videoId}&part=snippet&key=${API_KEY}`;
